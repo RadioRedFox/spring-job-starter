@@ -1,0 +1,27 @@
+starter-engine:
+  host: localhost
+  port: 5432
+  database: postgres
+  driver: postgresql
+  username: postgres
+  password: test0459
+  url: jdbc:postgresql://localhost:5432/postgres
+  schema: public
+
+values:
+  - apple
+  - banana
+  - orange
+
+engine-base-settings:
+  main-table:
+    name: process_engine
+    id-column-name: id
+    business-kye-column-name: business_kye
+    process-status-column-name: process_status
+    lock-version-sync-column-name: lock_version_sync
+    lock-time-to-column-name: lock_time_to
+    current-step-column-name: current_name
+    lock-version-async-column-name: lock_version_async
+    result-status-column-name: result_status_async
+    updated-column-name: updated
