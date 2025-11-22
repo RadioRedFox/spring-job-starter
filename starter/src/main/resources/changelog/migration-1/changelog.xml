@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="0" author="fox">
+        <tagDatabase tag="ENGINE_TABLES_INIT"/>
+    </changeSet>
+
+    <changeSet id="1" author="fox">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="engine_task"/>
+            </not>
+        </preConditions>
+
+        <comment>
+            Стартовое создание таблиц для движка
+        </comment>
+
+        <createTable tableName="engine_task">
+            <column name="id" type="bigserial" remarks="Первичный ключ">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="inserted" type="timestamptz" remarks="Время вставки">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process_time" type="timestamptz" remarks="Время когда обработать задание (очередь)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="business_entity" type="varchar(100)" remarks="Название сущности">
+                <constraints nullable="false"/>
+            </column>
+            <column name="business_key" type="uuid" remarks="Бизнес ключ бизнесс сущности">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trace_id" type="uuid" remarks="Глобальный trace_id для логов и терминирования">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flow" type="varchar(100)" remarks="Код выполняемого процесса (последовательности шагов)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flow_level" type="int" defaultValue="0" remarks="Уровень вложенности процесса">
+                <constraints nullable="false"/>
+            </column>
+            <column name="step" type="varchar(100)" remarks="Текущий шаг">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_terminate" type="boolean" defaultValue="false" remarks="Отменять ли текущий процесс">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process_status" type="varchar(50)" remarks="Текущий статус процесса">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lock_version" type="int8" remarks="Ключ блокировки для синхронного взаимодействия">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lock_time" type="timestamptz" remarks="Время блокировки"/>
+            <column name="lock_time_to" type="timestamptz" remarks="До скольки заблокирована запись"/>
+            <column name="lock_async" type="boolean" defaultValue="false" remarks="Ключ блокировки для асинхронного взаимодействия">
+                <constraints nullable="false"/>
+            </column>
+            <column name="step_result_async" type="varchar(100)" remarks="Результат асинхронного взаимодействия"/>
+            <column name="retry_count" type="int" defaultValue="0" remarks="Число попыток">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="timestamptz" remarks="Время последнего изменения">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="engine_task" indexName="engine_task_unique_pair_business_keys" unique="true">
+            <column name="business_entity"/>
+            <column name="business_key"/>
+        </createIndex>
+
+        <createTable tableName="engine_flow_back_stack">
+            <column name="engine_task_id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="flow_level" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="flow" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="step" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inserted" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex
+                indexName="engine_flow_back_stack_engine_task_id_flow_level_index_unique"
+                tableName="engine_flow_back_stack"
+                unique="true">
+            <column name="engine_task_id"/>
+            <column name="flow_level"/>
+        </createIndex>
+
+        <addForeignKeyConstraint
+                baseTableName="engine_flow_back_stack"
+                baseColumnNames="engine_task_id"
+                referencedTableName="engine_task"
+                referencedColumnNames="id"
+                constraintName="fk_engine_flow_back_stack_to_engine_task"
+                onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>
+
