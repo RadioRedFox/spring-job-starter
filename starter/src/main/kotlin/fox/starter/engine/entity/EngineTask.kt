@@ -11,7 +11,7 @@ data class EngineTask(
     val businessKey: UUID,
     val traceId: UUID,
     val flow: String,
-    val flowLevel: Int,
+    val flowLevel: Int = 0,
     var step: String,
     var toTerminate: Boolean = false,
     var processStatus: String,

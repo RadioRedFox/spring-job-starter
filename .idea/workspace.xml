@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="" />
+    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="start">
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineContext.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineContextConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineSchedulingConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/EngineTaskDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/EngineTaskColumn.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/exception/EngineRunTimeException.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/repository/EngineTaskRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/EngineTaskPoller.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/impl/EngineTaskPollerImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/FirstService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/FirstService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/TestServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/TestServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/enginTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/EngineTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,8 +107,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -140,13 +158,15 @@
     &quot;Kotlin.TestServerKt.executor&quot;: &quot;Run&quot;,
     &quot;Kotlin.TestServiceKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Fox/proga/spring-job-starter&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.433832&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -289,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763813013818</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="start">
+      <option name="closed" value="true" />
+      <created>1763814215925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763814215925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,5 +350,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
     <option name="LAST_COMMIT_MESSAGE" value="start" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
