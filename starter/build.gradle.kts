@@ -38,6 +38,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
 
     implementation("com.zaxxer:HikariCP")
+    implementation(libs.kotlinx.coroutines.core)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.1")
 
     //liquibase
     runtimeOnly(libs.postgresql)

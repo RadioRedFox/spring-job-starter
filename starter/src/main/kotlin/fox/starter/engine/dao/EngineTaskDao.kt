@@ -1,5 +1,7 @@
 package fox.starter.engine.dao
 
-interface EngineTaskDao {
+import fox.starter.engine.entity.EngineTask
 
+interface EngineTaskDao {
+    fun pollTask(): List<EngineTask>
 }

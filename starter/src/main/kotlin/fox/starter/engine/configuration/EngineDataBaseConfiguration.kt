@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import fox.starter.engine.properties.EngineDataBaseProperties
-import fox.starter.engine.repository.EngineTaskRepository
+import fox.starter.engine.dao.impl.EngineTaskDaoImpl
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.jdbc.datasource.DataSourceTransactionManager
@@ -49,9 +49,9 @@ class EngineDataBaseConfiguration(
         DataSourceTransactionManager(dataSource)
 
     @Bean
-    fun engineTaskRepository(@Qualifier("engineNamedParameterJdbcTemplate") engineNamedParameterJdbcTemplate: NamedParameterJdbcTemplate): EngineTaskDao {
+    fun engineTaskDao(@Qualifier("engineNamedParameterJdbcTemplate") engineNamedParameterJdbcTemplate: NamedParameterJdbcTemplate): EngineTaskDao {
         val schema = if (dataBaseProperties.schema.isNullOrBlank()) "" else dataBaseProperties.schema!!.trim() + "."
-        return EngineTaskRepository(namedParameterJdbcTemplate = engineNamedParameterJdbcTemplate, schema)
+        return EngineTaskDaoImpl(namedParameterJdbcTemplate = engineNamedParameterJdbcTemplate, schema)
     }
 }
 

@@ -1,13 +1,13 @@
-package fox.starter.engine.repository
+package fox.starter.engine.dao.impl
 
 import fox.starter.engine.dao.EngineTaskDao
+import fox.starter.engine.entity.EngineTask
 import fox.starter.engine.enums.EngineTaskColumn
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
 
 @Repository
-class EngineTaskRepository(
+class EngineTaskDaoImpl(
     private val namedParameterJdbcTemplate: NamedParameterJdbcTemplate,
     private val schema: String
 ): EngineTaskDao {
@@ -18,6 +18,10 @@ class EngineTaskRepository(
     }
 
     private val FULL_TABLE_NAME = "$schema$TABLE_NAME"
+
+    override fun pollTask(): List<EngineTask> {
+        return emptyList()
+    }
 
 
 }
