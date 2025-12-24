@@ -50,8 +50,7 @@ class EngineDataBaseConfiguration(
 
     @Bean
     fun engineTaskDao(@Qualifier("engineNamedParameterJdbcTemplate") engineNamedParameterJdbcTemplate: NamedParameterJdbcTemplate): EngineTaskDao {
-        val schema = if (dataBaseProperties.schema.isNullOrBlank()) "" else dataBaseProperties.schema!!.trim() + "."
-        return EngineTaskDaoImpl(namedParameterJdbcTemplate = engineNamedParameterJdbcTemplate, schema)
+        return EngineTaskDaoImpl(namedParameterJdbcTemplate = engineNamedParameterJdbcTemplate)
     }
 }
 

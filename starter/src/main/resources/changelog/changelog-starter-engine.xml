@@ -8,6 +8,7 @@
 
 
     <include file="migration-1/changelog.xml" relativeToChangelogFile="true"/>
+    <include file="migration-2/changelog.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>

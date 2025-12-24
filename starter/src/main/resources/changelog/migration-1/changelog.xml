@@ -33,19 +33,10 @@
             <column name="business_entity" type="varchar(100)" remarks="Название сущности">
                 <constraints nullable="false"/>
             </column>
-            <column name="business_key" type="uuid" remarks="Бизнес ключ бизнесс сущности">
+            <column name="business_entity_id" type="varchar(100)" remarks="Первичный ключ бизнесс сущности">
                 <constraints nullable="false"/>
             </column>
             <column name="trace_id" type="uuid" remarks="Глобальный trace_id для логов и терминирования">
-                <constraints nullable="false"/>
-            </column>
-            <column name="flow" type="varchar(100)" remarks="Код выполняемого процесса (последовательности шагов)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="flow_level" type="int" defaultValue="0" remarks="Уровень вложенности процесса">
-                <constraints nullable="false"/>
-            </column>
-            <column name="step" type="varchar(100)" remarks="Текущий шаг">
                 <constraints nullable="false"/>
             </column>
             <column name="to_terminate" type="boolean" defaultValue="false" remarks="Отменять ли текущий процесс">
@@ -59,10 +50,6 @@
             </column>
             <column name="lock_time" type="timestamptz" remarks="Время блокировки"/>
             <column name="lock_time_to" type="timestamptz" remarks="До скольки заблокирована запись"/>
-            <column name="lock_async" type="boolean" defaultValue="false" remarks="Ключ блокировки для асинхронного взаимодействия">
-                <constraints nullable="false"/>
-            </column>
-            <column name="step_result_async" type="varchar(100)" remarks="Результат асинхронного взаимодействия"/>
             <column name="retry_count" type="int" defaultValue="0" remarks="Число попыток">
                 <constraints nullable="false"/>
             </column>
@@ -70,45 +57,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-
-        <createIndex tableName="engine_task" indexName="engine_task_unique_pair_business_keys" unique="true">
-            <column name="business_entity"/>
-            <column name="business_key"/>
-        </createIndex>
-
-        <createTable tableName="engine_flow_back_stack">
-            <column name="engine_task_id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="flow_level" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="flow" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="step" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="inserted" type="timestamptz">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <createIndex
-                indexName="engine_flow_back_stack_engine_task_id_flow_level_index_unique"
-                tableName="engine_flow_back_stack"
-                unique="true">
-            <column name="engine_task_id"/>
-            <column name="flow_level"/>
-        </createIndex>
-
-        <addForeignKeyConstraint
-                baseTableName="engine_flow_back_stack"
-                baseColumnNames="engine_task_id"
-                referencedTableName="engine_task"
-                referencedColumnNames="id"
-                constraintName="fk_engine_flow_back_stack_to_engine_task"
-                onDelete="CASCADE"/>
     </changeSet>
 </databaseChangeLog>
 

@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="engine context">
+    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="engine coroutines">
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/ProcessStatus.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/util/ColumnName.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/util/ObservableDelegate.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/migration-2/changelog.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/starter/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineSchedulingConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineSchedulingConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/EngineTaskDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/EngineTaskDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/repository/EngineTaskRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/impl/EngineTaskDaoImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/EngineTaskPoller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/EngineTaskPoller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/impl/EngineTaskPollerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/scheduling/impl/EngineTaskPollerImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/impl/EngineTaskDaoImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/impl/EngineTaskDaoImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/EngineTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/EngineTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/EngineTaskColumn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/EngineTaskColumn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/changelog/changelog-starter-engine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/changelog-starter-engine.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/changelog/migration-1/changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/migration-1/changelog.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +130,9 @@
     &quot;accountId&quot;: &quot;18ca8a52-c169-4408-9665-4da60b100bb6&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -155,7 +161,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Fox/proga/spring-job-starter&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Fox/proga/spring-job-starter/starter/src/main/resources/changelog/migration-2&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.433832&quot;,
@@ -164,6 +170,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\resources\changelog\migration-2" />
       <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\resources" />
       <recent name="D:\Fox\proga\spring-job-starter\starter-tester\src\main\kotlin" />
       <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\kotlin" />
@@ -173,6 +180,7 @@
       <recent name="D:\Fox\proga\spring-job-starter\starter-tester\src\main\kotlin\main" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="fox.starter.engine.util" />
       <recent name="fox.starter.engine.dao.impl" />
     </key>
   </component>
@@ -321,7 +329,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765040234482</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="engine coroutines">
+      <option name="closed" value="true" />
+      <created>1765226415265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765226415265</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,7 +370,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
     <MESSAGE value="engine context" />
-    <option name="LAST_COMMIT_MESSAGE" value="engine context" />
+    <MESSAGE value="engine coroutines" />
+    <option name="LAST_COMMIT_MESSAGE" value="engine coroutines" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
