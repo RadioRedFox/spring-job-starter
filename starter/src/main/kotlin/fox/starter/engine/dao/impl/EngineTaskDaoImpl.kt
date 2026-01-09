@@ -22,36 +22,40 @@ class EngineTaskDaoImpl(
 ) : EngineTaskDao {
     companion object {
         private const val SHORT_NAME_TABLE = "et"
+        private const val ENGINE_TASK_TABLE_NAME = "engine_task"
         private val ALL_COLUMNS = EngineTaskColumn.entries.joinToString(",\n") { "$SHORT_NAME_TABLE.${it.columnName}" }
 
         private val POLL_TASK_SQL = """
             BEGIN;
             
             WITH rows_for_update AS (
-            SELECT id
-            FROM engine_task et 
+            SELECT ${EngineTaskColumn.ID.columnName}
+            FROM $ENGINE_TASK_TABLE_NAME $SHORT_NAME_TABLE 
             WHERE 1 = 1
-    	        and process_status = '${ProcessStatus.SCHEDULED.name}'
-    	        and process_time <= now()
-            ORDER BY process_time 
+    	        and ${EngineTaskColumn.PROCESS_STATUS.columnName} = '${ProcessStatus.SCHEDULED.name}'
+    	        and ${EngineTaskColumn.PROCESS_TIME.columnName} <= now()
+            ORDER BY ${EngineTaskColumn.PROCESS_TIME.columnName} 
             FOR UPDATE SKIP LOCKED
             LIMIT :batchSize
             )       
             
-            UPDATE engine_task et
+            UPDATE $ENGINE_TASK_TABLE_NAME $SHORT_NAME_TABLE 
             SET
-                process_status = '${ProcessStatus.PROCESSING.name}',
-                lock_version = lock_version + 1,
-                lock_time = now(),
-                lock_time_to = :lockTimeTo,
-                updated = now()
+                ${EngineTaskColumn.PROCESS_STATUS.columnName} = '${ProcessStatus.PROCESSING.name}',
+                ${EngineTaskColumn.LOCK_VERSION.columnName} = ${EngineTaskColumn.LOCK_VERSION.columnName} + 1,
+                ${EngineTaskColumn.LOCK_TIME.columnName} = now(),
+                ${EngineTaskColumn.LOCK_TIME_TO.columnName} = :lockTimeTo,
+                ${EngineTaskColumn.UPDATED.columnName} = now()
             FROM rows_for_update r
-            WHERE et.id = r.id
+            WHERE $SHORT_NAME_TABLE.${EngineTaskColumn.ID.columnName} = r.${EngineTaskColumn.ID.columnName}
             RETURNING $ALL_COLUMNS;
             
             COMMIT;
         """.trimIndent()
 
+        private val DELETE_TASK = """
+            delete from $ENGINE_TASK_TABLE_NAME where ${EngineTaskColumn.ID.columnName} = :id
+        """.trimIndent()
     }
 
     override fun pollTask(): List<EngineTask> =
@@ -63,7 +67,28 @@ class EngineTaskDaoImpl(
             )
         ) { rs, _ -> resultSetToEngineTask(rs) }
 
-    fun resultSetToEngineTask(rs: ResultSet): EngineTask =
+    override fun deleteTask(taskId: Long) {
+        namedParameterJdbcTemplate.update(
+            DELETE_TASK,
+            mapOf("id" to taskId)
+        )
+    }
+
+    override fun updateTaskWithLockVersionCheck(task: EngineTask) {
+        val sqlRequest = StringBuilder("update $ENGINE_TASK_TABLE_NAME set \n")
+        val requestProperties = mutableMapOf<String, Any?>()
+        task.setSQLUpdateRequestAndChangedProperties(sqlRequest, requestProperties)
+        sqlRequest.append("where ${EngineTaskColumn.ID.columnName} = :id \n")
+        sqlRequest.append("and ${EngineTaskColumn.LOCK_VERSION.columnName} = :lockVersion")
+        requestProperties["id"] = task.id
+        requestProperties["lockVersion"] = task.lockVersion
+        namedParameterJdbcTemplate.update(
+            sqlRequest.toString(),
+            requestProperties
+        )
+    }
+
+    private fun resultSetToEngineTask(rs: ResultSet): EngineTask =
         EngineTask(
             id = rs.getLong(EngineTaskColumn.ID),
             inserted = rs.getLocalDateTime(EngineTaskColumn.INSERTED),
