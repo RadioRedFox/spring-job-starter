@@ -7,23 +7,25 @@ import fox.starter.engine.enums.ProcessStatus
 import fox.starter.engine.exception.EngineRunTimeException
 import fox.starter.engine.service.handler.HandlerFactory
 import fox.starter.engine.service.stepdeterminant.StepDeterminantFactory
-import fox.starter.engine.service.taskprocessor.TaskProcessor
+import fox.starter.engine.service.taskprocessor.ScheduledStatusTaskProcessor
 
-class TaskProcessorImpl(
+class ScheduledStatusTaskProcessorImpl(
     private val stepDeterminantFactory: StepDeterminantFactory,
     private val handlerFactory: HandlerFactory,
     private val engineTaskDao: EngineTaskDao
-) : TaskProcessor {
+): ScheduledStatusTaskProcessor {
     override fun process(task: EngineTask) {
-        when (task.processStatus) {
-            ProcessStatus.SCHEDULED -> processScheduledTask(task)
-            ProcessStatus.WAITING -> {}
-            ProcessStatus.PROCESSING -> TODO()
-            else -> {}
+        try{
+            startProcess(task)
+        } catch (_: NoNowException) {
+
+        }
+        catch (_: Exception) {
+
         }
     }
 
-    private fun processScheduledTask(task: EngineTask) {
+    private fun startProcess(task: EngineTask) {
         val stepDeterminant = stepDeterminantFactory.getStepDeterminant(task.businessEntity)
         val entityId = stepDeterminant.parseId(task.businessEntityId)
         val (businessTaskStatus, businessObject, step) = stepDeterminant.getStep(entityId)
@@ -43,22 +45,16 @@ class TaskProcessorImpl(
             }
 
             BusinessTaskStatus.CANCELLED -> {
-                deleteTask(task)
+                engineTaskDao.deleteTask(task)
                 return
             }
         }
-        val handler = handlerFactory.getHandler(task.businessEntity, step)
-        val preConditionStatus = handler.preCondition(businessObject)
-        val result = handler.handle(businessObject)
-        val nextStep = stepDeterminant.calculateNextStep(businessObject, step, result)
-        stepDeterminant.moveStep(businessObject, nextStep)
+
+
     }
 
-//    private fun hand
 
-    private fun deleteTask(task: EngineTask) {
-        engineTaskDao.deleteTask(task)
-    }
 
-//    private
+    private class NoNowException(message: String) : RuntimeException(message)
+    private class FatalException(message: String) : RuntimeException(message)
 }

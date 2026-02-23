@@ -26,8 +26,6 @@ class EngineTaskDaoImpl(
         private val ALL_COLUMNS = EngineTaskColumn.entries.joinToString(",\n") { "$SHORT_NAME_TABLE.${it.columnName}" }
 
         private val POLL_TASK_SQL = """
-            BEGIN;
-            
             WITH rows_for_update AS (
             SELECT ${EngineTaskColumn.ID.columnName}
             FROM $ENGINE_TASK_TABLE_NAME $SHORT_NAME_TABLE 
@@ -49,12 +47,12 @@ class EngineTaskDaoImpl(
             FROM rows_for_update r
             WHERE $SHORT_NAME_TABLE.${EngineTaskColumn.ID.columnName} = r.${EngineTaskColumn.ID.columnName}
             RETURNING $ALL_COLUMNS;
-            
-            COMMIT;
         """.trimIndent()
 
         private val DELETE_TASK = """
-            delete from $ENGINE_TASK_TABLE_NAME where ${EngineTaskColumn.ID.columnName} = :id
+            delete from $ENGINE_TASK_TABLE_NAME where ${EngineTaskColumn.ID.columnName} = :id 
+            and ${EngineTaskColumn.LOCK_VERSION.columnName} = :lockVersion
+            ans ${EngineTaskColumn.DELETE_LOCK_VERSION.columnName} = :deleteLockVersion
         """.trimIndent()
     }
 
@@ -63,14 +61,18 @@ class EngineTaskDaoImpl(
             POLL_TASK_SQL,
             mapOf(
                 "batchSize" to 50,
-                "lockTimeTo" to System.currentTimeMillis() + 5 * 60 * 1000 // 5 minutes
+                "lockTimeTo" to LocalDateTime.now().plusMinutes(5)
             )
         ) { rs, _ -> resultSetToEngineTask(rs) }
 
-    override fun deleteTask(taskId: Long) {
+    override fun deleteTask(task: EngineTask) {
         namedParameterJdbcTemplate.update(
             DELETE_TASK,
-            mapOf("id" to taskId)
+            mapOf(
+                "id" to task.id,
+                "lockVersion" to task.lockVersion,
+                "deleteLockVersion" to task.deleteLockVersion
+            )
         )
     }
 

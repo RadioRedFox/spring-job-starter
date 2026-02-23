@@ -10,7 +10,7 @@ interface StepDeterminant<IdType, BusinessObjectType, StepType, ResultType> {
 
     fun calculateNextStep(businessObject: BusinessObjectType,
                           currentStep: StepType,
-                          handlerResult: ResultType): StepType {
+                          handlerResult: ResultType): StepType? {
         return currentStep
     }
 

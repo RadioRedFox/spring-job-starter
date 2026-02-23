@@ -17,7 +17,7 @@ class EngineLiquibaseConfiguration(
     fun engineLiquibase(): SpringLiquibase {
         val liquibase = SpringLiquibase()
         liquibase.dataSource = engineDataSource
-        liquibase.changeLog = "classpath:/changelog/changelog-starter-engine.xml"
+        liquibase.changeLog = "classpath:/changelog/starter-migrations/changelog-starter-engine.xml"
         liquibase.setShouldRun(true)
         return liquibase
     }

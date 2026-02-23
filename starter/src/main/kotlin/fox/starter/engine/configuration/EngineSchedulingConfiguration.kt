@@ -47,7 +47,6 @@ class EngineSchedulingConfiguration {
         CoroutineScope(SupervisorJob() + dispatcher)
 
     @Bean
-//    @ConditionalOnProperty("", matchIfMissing = false)
     internal fun engineTaskPoller(engineCoroutineScope: CoroutineScope, engineTaskDao: EngineTaskDao): EngineTaskPoller {
         return EngineTaskPollerImpl(engineCoroutineScope, engineTaskDao)
     }

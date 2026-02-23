@@ -16,6 +16,8 @@ internal object EngineContext {
         child.parent = parent
         child.environment = parent.environment as ConfigurableEnvironment
         child.register(EngineSchedulingConfiguration::class.java)
+        child.register(EngineDataBaseConfiguration::class.java)
+        child.register(EngineLiquibaseConfiguration::class.java)
         child.refresh()
 
         context = child

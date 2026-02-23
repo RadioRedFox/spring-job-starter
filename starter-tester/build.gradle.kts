@@ -19,6 +19,11 @@ dependencies {
     implementation(project(":starter"))
     implementation(libs.spring.boot.starter.web)
     implementation("org.springframework.boot:spring-boot-starter")
+
+    runtimeOnly(libs.postgresql)
+    implementation("com.zaxxer:HikariCP")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.postgresql:postgresql")
 }
 
 tasks.test {

@@ -4,8 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="engine coroutines">
+    <list default="true" id="7cac23fe-4f10-49af-8e49-4522d4c1acb1" name="Changes" comment="some code">
+      <change afterPath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/conf/DataBaseConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter-tester/src/main/resources/changelog/changelog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter-tester/src/main/resources/changelog/migration-1/changelog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/properties/EngineProperties.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/handler/AbstractHandler.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/taskprocessor/ScheduledStatusTaskProcessor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/taskprocessor/impl/ScheduledStatusTaskProcessorImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter-tester/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/starter-tester/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter-tester/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/starter-tester/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineContext.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineContext.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineDataBaseConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineLiquibaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineLiquibaseConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineSchedulingConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/configuration/EngineSchedulingConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/EngineTaskDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/EngineTaskDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/impl/EngineTaskDaoImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/dao/impl/EngineTaskDaoImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/EngineTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/entity/EngineTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/ProcessStatus.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/enums/ProcessStatus.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/properties/EngineDataBaseProperties.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter-tester/src/main/kotlin/mainpack/main/conf/DataBaseProperties.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/stepdeterminant/StepDeterminant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/stepdeterminant/StepDeterminant.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/taskprocessor/impl/TaskProcessorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/kotlin/fox/starter/engine/service/taskprocessor/impl/TaskProcessorImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/changelog/changelog-starter-engine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/starter-migrations/changelog-starter-engine.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/changelog/migration-1/changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/starter-migrations/migration-1/changelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter/src/main/resources/changelog/migration-2/changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/src/main/resources/changelog/starter-migrations/migration-2/changelog.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,12 +190,19 @@
       <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\kotlin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\resources\changelog\starter-migrations" />
       <recent name="D:\Fox\proga\spring-job-starter\starter\src\main\resources\ META-INF" />
       <recent name="D:\Fox\proga\spring-job-starter\starter-tester\src\main\kotlin\main" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="fox.starter.engine.service.handler" />
+      <recent name="fox.starter.engine.service.taskprocessor" />
+      <recent name="fox.starter.engine.properties" />
       <recent name="fox.starter.engine.util" />
       <recent name="fox.starter.engine.dao.impl" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="mainpack.main.conf" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -225,10 +256,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="spring-job-starter:starter-tester [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="spring-job-starter:starter [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/starter-tester" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/starter" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -236,7 +267,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -279,10 +310,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.TestServerKt (1)" />
+        <item itemvalue="Gradle.spring-job-starter:starter-tester [clean]" />
+        <item itemvalue="Gradle.spring-job-starter:starter [clean]" />
         <item itemvalue="Gradle.spring-job-starter:starter [build]" />
         <item itemvalue="Gradle.spring-job-starter:starter [bootJar]" />
-        <item itemvalue="Gradle.spring-job-starter:starter-tester [build]" />
-        <item itemvalue="Gradle.spring-job-starter:starter-tester [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766567440324</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="some code">
+      <option name="closed" value="true" />
+      <created>1767986703385</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767986703385</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,7 +408,8 @@
     <MESSAGE value="start" />
     <MESSAGE value="engine context" />
     <MESSAGE value="engine coroutines" />
-    <option name="LAST_COMMIT_MESSAGE" value="engine coroutines" />
+    <MESSAGE value="some code" />
+    <option name="LAST_COMMIT_MESSAGE" value="some code" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

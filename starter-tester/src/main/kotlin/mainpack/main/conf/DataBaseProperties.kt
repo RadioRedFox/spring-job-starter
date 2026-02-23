@@ -1,9 +1,9 @@
-package fox.starter.engine.properties
+package mainpack.main.conf
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "starter-engine")
-class EngineDataBaseProperties {
+class DataBaseProperties {
     lateinit var username: String
     lateinit var password: String
     lateinit var url: String

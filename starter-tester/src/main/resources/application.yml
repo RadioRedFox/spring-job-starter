@@ -7,6 +7,17 @@ starter-engine:
   password: test0459
   url: jdbc:postgresql://localhost:5432/postgres
   schema: public
+  dataSourceBinName: dataSource
+
+spring:
+  datasource:
+    driver: org.postgresql.Driver
+    username: postgres
+    password: test0459
+    url: jdbc:postgresql://localhost:5432/postgres
+    schema: public
+  liquibase:
+    change-log: classpath:/changelog/changelog.xml
 
 values:
   - apple
